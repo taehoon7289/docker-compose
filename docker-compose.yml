@@ -1,0 +1,59 @@
+version: "3" # 파일 규격 버전
+services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
+  mysql8.0: # 서비스 명
+    image: mysql:8.0 # 사용할 이미지
+    container_name: mysql8.0 # 컨테이너 이름 설정
+    ports:
+      - '3306:3306' # 접근 포트 설정 (컨테이너 외부:컨테이너 내부)
+    environment: # -e 옵션
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}  # MYSQL 패스워드 설정 옵션
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    command: # 명령어 실행
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - '${MYSQL_WORKDIR}:/var/lib/mysql' # -v 옵션 (다렉토리 마운트 설정)
+    
+  jenkins:
+    image: jenkins/jenkins:latest
+    container_name: jenkins
+    ports:
+      - '8080:8080'
+      - '50000:50000'
+    volumes:
+      - '${JENKINS_WORKDIR}:/var/jenkins_home'
+      - '${PROJECT_WORKDIR}/${BACKEND_REPO_NAME}/:/home/app/'
+  
+  httpd:
+    image: httpd:2.4.46
+    container_name: httpd
+    depends_on:
+      - mysql8.0
+    networks:
+      - frontend
+      - backend
+    ports:
+      - '80:80'
+    volumes:
+      - ${PROJECT_WORKDIR}/${FRONTEND_REPO_NAME}/build/:/usr/local/apache2/htdocs/
+      
+  java11:
+    image: openjdk:11.0.8-jdk
+    container_name: java11
+    volumes:
+      - '${PROJECT_WORKDIR}/${BACKEND_REPO_NAME}/:/app/'
+      - '${PROJECT_WORKDIR}/uploadFiles:/app/uploadFiles/'
+    links:
+      - mysql8.0
+    depends_on:
+      - mysql8.0
+    ports:
+      - '58080:58080'
+#    restart: always
+    command: 'java -jar -Dspring.profiles.active=${PROFILE}  /app/mango-0.0.1.jar'
+
+networks:
+  frontend:
+  backend:
+          
