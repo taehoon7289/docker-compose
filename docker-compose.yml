@@ -41,7 +41,7 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
       - '80:80'
     volumes:
       - ${PROJECT_WORKDIR}/${FRONTEND_REPO_NAME}/build/:/usr/local/apache2/htdocs/
-      
+
   java11:
     image: openjdk:11.0.8-jdk
     container_name: java11
@@ -63,4 +63,3 @@ networks:
     driver: bridge
   backend:
     driver: bridge
-          
