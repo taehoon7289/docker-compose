@@ -30,7 +30,8 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
     networks:
       - backend
   httpd:
-    image: httpd:2.4.46
+#    image: httpd:2.4.46
+    build: ./build/httpd
     container_name: httpd
     depends_on:
       - mysql8.0
@@ -39,6 +40,7 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
       - backend
     ports:
       - '80:80'
+      - '8888:8888'
     volumes:
       - ${PROJECT_WORKDIR}/${FRONTEND_REPO_NAME}/build/:/usr/local/apache2/htdocs/
 

@@ -1,2 +1,2 @@
 #!/bin/bash
-docker-compose --env-file .env.gcp up -d
+docker-compose --env-file .env-gcp up -d --build
