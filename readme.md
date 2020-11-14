@@ -38,7 +38,7 @@
   </code>
 </pre>
 
-5. .env 파일에 각 환경에 맞는 변수값 지정
+5. .env 파일에 각 환경에 맞는 변수값 지정(.env-gcp, .env-local 참고)
 <pre>
   <code>
     $ vi /home/docker-compose/.env
