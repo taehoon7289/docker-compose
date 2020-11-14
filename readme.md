@@ -21,6 +21,8 @@
     $ curl -L https://github.com/docker/compose/releases/download/1.25.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
     $ chmod 755 /usr/local/bin/docker-compose
     $ ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+    $ service docker start
+    $ docker ps
   </code>
 </pre>
 
