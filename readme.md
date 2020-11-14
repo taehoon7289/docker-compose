@@ -14,3 +14,10 @@
     $ cd /home
   </code>
 </pre>
+
+3. 현재 github clone
+<pre>
+  <code>
+    $ git clone 
+  </code>
+</pre>
