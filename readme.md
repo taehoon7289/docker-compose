@@ -11,13 +11,11 @@
 
 <pre>
   <code>
-    $ git install -y docker-ce
     $ yum install docker-ce-18.06.3.ce-3.el7
     $ curl -L https://github.com/docker/compose/releases/download/1.25.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
     $ chmod 755 /usr/local/bin/docker-compose
   </code>
 </pre>
-
 
 2. /home 디렉토리로 이동
 <pre>
@@ -37,6 +35,27 @@
 <pre>
   <code>
     $ cd /home/docker-compose
+  </code>
+</pre>
+
+5. .env 파일에 각 환경에 맞는 변수값 지정
+<pre>
+  <code>
+    $ vi /home/docker-compose/.env
+  </code>
+</pre>
+
+6. docker-compose.yml 변경할 값이 있는경우 변경
+<pre>
+  <code>
+    $ vi /home/docker-compose/docker-compose.yml
+  </code>
+</pre>
+
+7. httpd 의 conf 값 설정
+<pre>
+  <code>
+    $ cd /home/docker-compose/httpd/apache2/conf/
   </code>
 </pre>
 
