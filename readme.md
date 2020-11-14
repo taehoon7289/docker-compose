@@ -5,7 +5,7 @@
 <pre>
   <code>
     $ yum update
-    $ git install -y git
+    $ yum install -y git
   </code>
 </pre>
 
