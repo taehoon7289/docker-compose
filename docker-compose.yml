@@ -19,8 +19,6 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
   jenkins:
     image: jenkins/jenkins:latest
     container_name: jenkins
-#    links:
-#      - java11
     ports:
       - '8080:8080'
       - '50000:50000'
@@ -31,7 +29,6 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
     networks:
       - backend
   httpd:
-#    image: httpd:2.4.46
     build: ./build/httpd
     container_name: httpd
     depends_on:
@@ -51,8 +48,6 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
     volumes:
       - '${PROJECT_WORKDIR}/${BACKEND_REPO_NAME}/:/app/'
       - '${PROJECT_WORKDIR}/uploadFiles:/app/uploadFiles/'
-#    links:
-#      - mysql8.0
     depends_on:
       - mysql8.0
     ports:
