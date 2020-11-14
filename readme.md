@@ -9,6 +9,8 @@
   </code>
 </pre>
 
+2. docker-ce, docker-compose 설치 (docker-compose 는 https://github.com/docker/compose/releases 에서 버전 확인후 원하는 버전으로 설치)
+
 <pre>
   <code>
     $ yum install yum install -y yum-utils device-mapper-persistent-data lvm2
