@@ -30,7 +30,7 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
 #    networks:
 #      - backend
 #    environment:
-#      TZ: "Asia/Seoul"
+#      TZ: ${TIMEZONE}
   httpd:
     build: ./build/httpd
     container_name: httpd
@@ -45,7 +45,7 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
     volumes:
       - ${PROJECT_WORKDIR}/${FRONTEND_REPO_NAME}/build/:/usr/local/apache2/htdocs/
     environment:
-      TZ: "Asia/Seoul"
+      TZ: ${TIMEZONE}
 
   java11:
     image: openjdk:11.0.8-jdk
@@ -62,7 +62,8 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
     networks:
       - backend
     environment:
-      TZ: "Asia/Seoul"
+      TZ: ${TIMEZONE}
+
 networks:
   frontend:
     driver: bridge
