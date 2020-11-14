@@ -9,6 +9,7 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}  # MYSQL 패스워드 설정 옵션
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      TZ: ${TIMEZONE}
     command: # 명령어 실행
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
@@ -16,8 +17,6 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
       - '${MYSQL_WORKDIR}:/var/lib/mysql' # -v 옵션 (다렉토리 마운트 설정)
     networks:
       - backend
-    environment:
-      TZ: "Asia/Seoul"
 #  jenkins:
 #    image: jenkins/jenkins:latest
 #    container_name: jenkins
