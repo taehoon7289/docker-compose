@@ -63,6 +63,15 @@ services: # 이 항목 밑에 실행하려는 컨테이너 들을 정의
       - backend
     environment:
       TZ: ${TIMEZONE}
+#  node12:
+#    build: ./build/node
+#    continaer_name: node12
+#    depends_on:
+#      - httpd
+#    networks:
+#      - frontend
+#    ports:
+#      - '3000:3000'
 
 networks:
   frontend:
